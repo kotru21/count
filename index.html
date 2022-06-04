@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <title>да уж...</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  </head>
+  <body class="bd">
+    <div class="pr1 progress-bar-striped progress-bar-animated">
+      <div class="card-deck" style="margin-bottom: 14%">
+        <div class="row">
+          <div class="card m-auto">
+            <div class="card-body">
+              <h5 class="card-title" style="margin-top: 2rem">До 1-го сентября осталось:</h5>
+              <hr style="margin-top: 2rem" />
+              <p class="card-text"></p>
+              <p id="days" class="count_text"></p>
+              <p id="hours" class="count_text"></p>
+              <p id="min" class="count_text"></p>
+              <p id="sec" class="count_text"></p>
+              <hr style="margin-top: 2rem; margin-bottom: 2rem" />
+              <div class="progress">
+                <div id="idq" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <p id="crdtxt" style="margin-top: 1rem" class="card-title"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto my-2 order-1 order-md-1" style="text-align: center">
+        <a class="bx bxl-vk btn" href="https://vk.com/arsenij_kotikov"> </a>
+        <a class="bx bx-globe btn" href="https://kotikov.pages.dev"> </a>
+      </div>
+    </div>
+  </body>
+  <script>
+    function count() {
+      var date1 = new Date();
+
+      var date = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate();
+      var date2 = new Date("09/01/" + date1.getFullYear());
+
+      var Difference_In_Time = date2.getTime() - date1.getTime();
+
+      var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      let wdth = Math.round(Number(90 - Difference_In_Days));
+      document.getElementById("crdtxt").innerHTML = "прошло " + '<a class="perc">' + wdth + "%</a>" + " лета";
+      var progress = document.getElementsByClassName("progress1");
+      document.getElementById("idq").style.width = wdth + "%";
+      var Difference_In_Hours = Difference_In_Time / (1000 * 3600);
+      var Difference_In_min = Difference_In_Time / (1000 * 60);
+      var Difference_In_sec = Difference_In_Time / 1000;
+
+      document.getElementById("days").innerHTML = "⌛ Дней: " + Difference_In_Days;
+      document.getElementById("hours").innerHTML = "⌛ Часов: " + Difference_In_Hours;
+      document.getElementById("min").innerHTML = "⌛ Минут: " + Difference_In_min;
+      document.getElementById("sec").innerHTML = "⌛ Секунд: " + Difference_In_sec;
+      setTimeout(count, 10);
+    }
+    count();
+  </script>
+  <style>
+    .count_text {
+      font-size: 1rem;
+    }
+    @media screen and (min-width: 500px) {
+      .count_text {
+        font-size: 1.5rem;
+      }
+    }
+    .card {
+      border-radius: 2rem;
+      background: #1d1d1d;
+      color: white;
+      max-width: 600px;
+    }
+    .card-title {
+      font-size: 2rem;
+      text-align: center;
+    }
+    .card-deck {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+    .progress-bar {
+      color: black;
+    }
+    .pr1 {
+      height: 100%;
+      padding-top: 8rem;
+    }
+    .perc {
+      background: linear-gradient(to right, rgb(248, 187, 172) 20%, #6255da 30%, #da446a 70%, rgb(230, 71, 71) 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: textShine 2s ease-in-out infinite alternate;
+    }
+    @keyframes textShine {
+      to {
+        background-position: 200%;
+      }
+    }
+
+    .bd {
+      background: linear-gradient(243deg, #ff0202, #0046e7);
+      background-size: 400% 400%;
+
+      -webkit-animation: bg 10s ease infinite;
+      -moz-animation: bg 10s ease infinite;
+      animation: bg 10s ease infinite;
+    }
+
+    @-webkit-keyframes bg {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    @-moz-keyframes bg {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    @keyframes bg {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .bx {
+      text-decoration: none;
+      margin-right: 1rem;
+      font-size: 28px;
+      opacity: 100%;
+      background-color: #ffffff67;
+    }
+  </style>
+</html>
