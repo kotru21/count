@@ -46,13 +46,13 @@
         </div>
       </div>
     </div>
-    <div style=" position: fixed; left: 20%; right: 20%; margin-top: -5rem;">
-      <!-- Copyright -->
-      <div class="text-center p-3" >
+    <div style="position: fixed; left: 10%; right: 10%; margin-top: -5rem">
+      <div class="text-center p-3">
         <a class="bx bxl-vk btn" href="https://vk.com/arsenij_kotikov"> </a>
         <a class="bx bx-globe btn" href="https://kotikov.pages.dev"> </a>
+        <a class="bx bx-transfer-alt btn" id="btn"> </a>
       </div>
-
+    </div>
   </body>
   <script>
     function count() {
@@ -66,19 +66,69 @@
       var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
       let wdth = Math.round(Number(90 - Difference_In_Days));
       document.getElementById("crdtxt").innerHTML = "прошло " + '<a class="perc">' + wdth + "%</a>" + " лета";
-      var progress = document.getElementsByClassName("progress1");
       document.getElementById("idq").style.width = wdth + "%";
       var Difference_In_Hours = Difference_In_Time / (1000 * 3600);
       var Difference_In_min = Difference_In_Time / (1000 * 60);
       var Difference_In_sec = Difference_In_Time / 1000;
+      //other sussy things
+      var Difference_In_HoursAcc = Difference_In_Time / (1000 * 3600) - Math.round(Difference_In_Days - 1) * 24;
+      var intmaster = (Difference_In_Time / (1000 * 60) - Math.round(Difference_In_Days - 1) * 24 * 60) / 60 - 1;
+      //console.log(intmaster);
+      var Difference_In_minAcc = 60 - 60 * (Math.trunc(intmaster) + 1 - intmaster);
+      var Difference_In_secAcc = (Difference_In_minAcc - Math.trunc(Difference_In_minAcc)) * 60;
+      //console.log(Difference_In_Days + " " + Difference_In_secAcc + " " + Difference_In_minAcc + " " + Difference_In_HoursAcc);
+      if (ft) {
+        document.getElementById("days").innerHTML = "⌛ Дней: " + Difference_In_Days;
+        document.getElementById("hours").innerHTML = "⌛ Часов: " + Difference_In_Hours;
+        document.getElementById("min").innerHTML = "⌛ Минут: " + Difference_In_min;
+        document.getElementById("sec").innerHTML = "⌛ Секунд: " + Difference_In_sec;
+      } else {
+        document.getElementById("days").innerHTML = "⌛ Дней: " + String(Difference_In_Days).split(".")[0] + "<div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100' id='id1'>&nbsp</div>";
+        document.getElementById("hours").innerHTML = "⌛ Часов: " + String(Difference_In_HoursAcc).split(".")[0] + "<div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100' id='id2'>&nbsp</div>";
+        document.getElementById("min").innerHTML = "⌛ Минут: " + String(Difference_In_minAcc).split(".")[0] + "<div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100' id='id3'>&nbsp</div>";
+        document.getElementById("sec").innerHTML = "⌛ Секунд: " + String(Difference_In_secAcc).split(".")[0] + "<div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100' id='id4'>&nbsp</div>";
+        let wdth1 = Math.round(Number(1.6 * (60 - (90 - Difference_In_HoursAcc))));
+        document.getElementById("id1").style.width = wdth1 + "%";
+        document.getElementById("id1").style.marginTop = "0.5rem";
 
-      document.getElementById("days").innerHTML = "⌛ Дней: " + Difference_In_Days;
-      document.getElementById("hours").innerHTML = "⌛ Часов: " + Difference_In_Hours;
-      document.getElementById("min").innerHTML = "⌛ Минут: " + Difference_In_min;
-      document.getElementById("sec").innerHTML = "⌛ Секунд: " + Difference_In_sec;
+        let wdth2 = Number(1.6 * (60 - (24 - Difference_In_HoursAcc)));
+        document.getElementById("id2").style.width = wdth2 + "%";
+        document.getElementById("id2").style.marginTop = "0.5rem";
+        let wdth3 = Number(1.6 * (60 - (60 - Difference_In_minAcc)));
+        document.getElementById("id3").style.width = wdth3 + "%";
+        document.getElementById("id3").style.marginTop = "0.5rem";
+        let wdth4 = Number(1.6 * (60 - (60 - Difference_In_secAcc)));
+        document.getElementById("id4").style.width = wdth4 + "%";
+        document.getElementById("id4").style.marginTop = "0.5rem";
+      }
       setTimeout(count, 10);
     }
     count();
+    var ft = false;
+
+    function f1() {
+      console.log("f1");
+      ft = true;
+    }
+
+    function f2() {
+      console.log("f2");
+      ft = false;
+    }
+
+    btn.addEventListener(
+      "click",
+      function () {
+        if (ft) {
+          f1();
+          ft = false;
+        } else {
+          f2();
+          ft = true;
+        }
+      },
+      false
+    );
   </script>
   <style>
     body {
@@ -97,6 +147,8 @@
       background: #1d1d1d;
       color: white;
       max-width: 600px;
+      transition: all 1s ease-out;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.432);
     }
     .card-title {
       font-size: 2rem;
@@ -108,10 +160,11 @@
     }
     .progress-bar {
       color: black;
+      box-shadow: 0px 0px 20px #0046e7;
     }
     .pr1 {
       height: 100%;
-      padding-top: 11vh;
+      padding-top: 10vh;
     }
     .perc {
       background: linear-gradient(to right, rgb(248, 187, 172) 20%, #6255da 30%, #da446a 70%, rgb(230, 71, 71) 80%);
