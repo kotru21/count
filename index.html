@@ -64,7 +64,8 @@
       var Difference_In_Time = date2.getTime() - date1.getTime();
 
       var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-      let wdth = Math.round(Number(90 - Difference_In_Days));
+      let wdth = Number(90 - Difference_In_Days);
+      wdth = String(wdth).slice(0, 4);
       document.getElementById("crdtxt").innerHTML = "прошло " + '<a class="perc">' + wdth + "%</a>" + " лета";
       document.getElementById("idq").style.width = wdth + "%";
       var Difference_In_Hours = Difference_In_Time / (1000 * 3600);
@@ -169,7 +170,7 @@
     }
     .pr1 {
       height: 100%;
-      padding-top: 10vh;
+      padding-top: 8vh;
     }
     .perc {
       background: linear-gradient(to right, rgb(248, 187, 172) 20%, #6255da 30%, #da446a 70%, rgb(230, 71, 71) 80%);
