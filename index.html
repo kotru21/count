@@ -78,7 +78,7 @@
       var Difference_In_minAcc = 60 - 60 * (Math.trunc(intmaster) + 1 - intmaster);
       var Difference_In_secAcc = (Difference_In_minAcc - Math.trunc(Difference_In_minAcc)) * 60;
       //console.log(Difference_In_Days + " " + Difference_In_secAcc + " " + Difference_In_minAcc + " " + Difference_In_HoursAcc);
-      if (!ft) {
+      if (ft) {
         document.getElementById("days").innerHTML = "⌛ Дней: <b>" + Difference_In_Days + "</b>";
         document.getElementById("hours").innerHTML = "⌛ Часов: <b>" + Difference_In_Hours + "</b>";
         document.getElementById("min").innerHTML = "⌛ Минут: <b>" + Difference_In_min + "</b>";
