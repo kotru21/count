@@ -73,7 +73,7 @@
       var Difference_In_sec = Difference_In_Time / 1000;
       //other sussy things
       var Difference_In_HoursAcc = Difference_In_Time / (1000 * 3600) - Math.trunc(Difference_In_Days) * 24;
-      var intmaster = (Difference_In_Time / (1000 * 60) - Math.trunc(Difference_In_Days) * 24 * 60) / 60 - 1;
+      var intmaster = (Difference_In_Time / (1000 * 60) - Math.trunc(Difference_In_Days) * 24 * 60) / 60;
       //console.log(intmaster);
       var Difference_In_minAcc = 60 - 60 * (Math.trunc(intmaster) + 1 - intmaster);
       var Difference_In_secAcc = (Difference_In_minAcc - Math.trunc(Difference_In_minAcc)) * 60;
